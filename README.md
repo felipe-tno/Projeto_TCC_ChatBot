@@ -39,9 +39,6 @@ O chatbot utiliza o modelo: LLaMA 3.3-70B (Meta)
 ```plaintext
 MONEY-MATE/
 │
-├── app/
-│   ├── moneymate_web.py       # (principal)
-│   ├── supabase_client.py     # Conexão e operações no Supabase
 │
 ├── templates/
 │   └── index.html             # Interface web
@@ -53,7 +50,9 @@ MONEY-MATE/
 ├── .env.example
 ├── requirements.txt
 ├── README.md
-└── .gitignore
+├── .gitignore
+├── moneymate_web.py       # (principal)
+└── supabase_client.py     # Conexão e operações no Supabase
 
 
 **Projeto MoneyMate**
