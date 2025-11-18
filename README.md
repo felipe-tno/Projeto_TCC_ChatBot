@@ -1,3 +1,61 @@
+# 💸 MoneyMate – Chatbot Financeiro com LLaMA 3.3 (Groq) + Flask + Supabase
+
+**MoneyMate** é um chatbot financeiro inteligente que interpreta mensagens em linguagem natural, extrai valores e categoriza automaticamente cada gasto usando o modelo **LLaMA 3.3 70B** da **Groq API**.
+
+O sistema roda localmente usando **Flask** e possui uma interface web simples em **HTML/CSS/JS**, além de armazenar todos os registros no **Supabase**.
+
+---
+
+## 🚀 Funcionalidades
+
+- Interpretação de texto natural (ex: “Uber 25 reais”, “Comprei um lanche por 22,90”)
+- Extração automática de valor e descrição
+- Classificação inteligente da categoria do gasto usando IA (Groq LLaMA 3.3-70B)
+- Registro persistido no Supabase
+- Interface web própria para testes
+- API HTTP em Flask
+- Separação clara entre backend, frontend e banco
+
+---
+
+## 🧠 Inteligência Artificial (Groq)
+
+O chatbot utiliza o modelo: LLaMA 3.3-70B (Meta)
+
+## 🧰 Tecnologias Utilizadas
+
+| Camada      | Tecnologia |
+|-------------|------------|
+| Backend     | Flask (Python) |
+| IA          | Groq API (LLaMA 3.3 70B) |
+| Banco       | Supabase (PostgreSQL + API) |
+| Frontend    | HTML, CSS, JavaScript |
+| Integração  | Fetch API (frontend → Flask) |
+
+---
+
+## 📁 Estrutura do Projeto
+
+```plaintext
+MONEY-MATE/
+│
+├── app/
+│   ├── moneymate_web.py       # (principal)
+│   ├── supabase_client.py     # Conexão e operações no Supabase
+│
+├── templates/
+│   └── index.html             # Interface web
+│
+├── static/
+│   ├── style.css
+│   └── script.js
+│
+├── .env.example
+├── requirements.txt
+├── README.md
+└── .gitignore
+
+
 **Projeto MoneyMate**
 
 Este repositório contém uma aplicação web em Flask chamada `moneymate_web.py` que usa Supabase para persistência e a API Groq para interpretar mensagens de gastos em português.
@@ -63,31 +121,6 @@ Invoke-RestMethod -Method Get -Uri 'http://127.0.0.1:5000/gastos'
 
 As requisições acima retornam JSON com a resposta do bot e/ou conteúdo salvo no Supabase.
 
-**Tabelas Supabase (exemplo SQL)**
-Use o SQL editor do Supabase para criar as tabelas mínimas esperadas.
-
-Tabela `gastos` (exemplo):
-```
-create table gastos (
-  id serial primary key,
-  id_usuario uuid,
-  descricao text,
-  valor numeric,
-  categoria text,
-  criado_em timestamp with time zone default timezone('utc'::text, now())
-);
-```
-
-Tabela `orcamentos` (exemplo):
-```
-create table orcamentos (
-  id_orcamento serial primary key,
-  id_usuario uuid,
-  categoria text,
-  limite_mensal numeric,
-  criado_em timestamp with time zone default timezone('utc'::text, now())
-);
-```
 
 **Comportamento e notas**
 - Ao iniciar, a aplicação carrega `credenciais.env`. Se as variáveis não estiverem definidas, o app irá levantar uma exceção.
@@ -99,10 +132,5 @@ create table orcamentos (
 - Erro: "GROQ_API_KEY não encontrado": defina a variável no `credenciais.env`.
 - Se a aplicação não conseguir salvar no Supabase, verifique a URL/KEY e permissões das tabelas.
 
-**Próximos passos sugeridos**
-- Adicionar testes automatizados (pytest) para endpoints.
-- Adicionar validação/normalização de UUID no frontend antes do envio.
-
-Se quiser, eu posso: (1) criar um script de inicialização (`scripts/run.ps1`), (2) adicionar um exemplo `.env.example`, ou (3) criar testes básicos com `pytest`.
 
 *** Obrigado! ***
