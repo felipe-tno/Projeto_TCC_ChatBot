@@ -53,6 +53,9 @@ MONEY-MATE/
 ├── .gitignore
 ├── moneymate_web.py       # (principal)
 └── supabase_client.py     # Conexão e operações no Supabase
+```
+
+
 
 
 **Projeto MoneyMate**
